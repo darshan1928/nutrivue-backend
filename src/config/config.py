@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     # Firebase
     FIREBASE_CREDENTIALS_PATH: str = "./serviceAccountKey.json"
     DATABASE_URL_SYNC:str
+    DATABASE_URL_ASYNC:str
     DB_USER:str
     DB_PASSWORD:str
     DB_HOST:str

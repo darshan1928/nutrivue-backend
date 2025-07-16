@@ -23,15 +23,20 @@ async def startup():
     await init_cache()  # Initialize Redis connection
     initialize_firebase()
 
-    
+@app.get("/public")
+async def public_endpoint():
+    return {"message": "Testing"}
+
+
 # Set up CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=get_settings().BACKEND_CORS_ORIGINS,
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["Authorization", "Content-Type"],
 )
+
 
 # Include API routers
 app.include_router(api_router, prefix=get_settings().API_V1_STR)

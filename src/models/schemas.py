@@ -93,7 +93,7 @@ class UserOut(BaseModel):
     created_at: datetime  # <-- Fix: must be datetime, not str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 class UserProfileResponse(UserProfileCreate):
     id: str
     target_calories: Optional[int]
@@ -138,7 +138,7 @@ class FoodLogResponse(BaseModel):
     image_url: Optional[str]
 
 class Config:
-    orm_mode = True
+    from_attributes = True
 
 
 class FoodLogBatchCreate(BaseModel):
@@ -167,9 +167,7 @@ class MonthlyNutritionResponse(BaseModel):
 
     # In your schemas file (src/models/schemas.py)
 
-from pydantic import BaseModel
-from datetime import datetime, date
-from typing import List
+
 
 class FoodItemDetail(BaseModel):
     id: str

@@ -44,7 +44,7 @@ services:
       - DB_NAME=${DB_NAME}
       - DATABASE_URL_SYNC=postgresql+psycopg2://${DB_USER}:${DB_PASSWORD}@postgres:${DB_PORT}/${DB_NAME}
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
-      - REDIS_URL=redis://redis:6379
+      - REDIS_URL=${REDIS_URL}
       - CACHE_EXPIRE_HOURS=${CACHE_EXPIRE_HOURS}
     volumes:
       - .:/app

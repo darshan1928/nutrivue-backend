@@ -1,18 +1,20 @@
 from logging.config import fileConfig
+from dotenv import load_dotenv
+import os
+from src.db.models.user import User
+from src.db.models.food_log import FoodLog
 
+from src.db.base import Base 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-import os
-from dotenv import load_dotenv
+
 from alembic import context
-from src.db.base import Base
-from src.db.models.user import User  # Add your models here
-from src.db.models.food_log import FoodLog    # Add your models here
 load_dotenv()
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 config.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL_SYNC"))
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
